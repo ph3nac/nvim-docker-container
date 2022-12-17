@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  nvim:
+    container_name: nvim-lsp-mac
+    environment:
+      XDG_CONFIG_HOME: /root/.config
+      XDG_DATA_HOME: /root/.local/share
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+      args:
+        - PYENV_ROOT=${PYENV_ROOT}
+    image: neovim-lsp/mac
+    stdin_open: true
+    tty: true
+    volumes:
+      - type: bind
+        source: ./nvim
+        target: /root/.config/nvim
+      - ${HOME}:${HOME}:cached
+    working_dir: ${PWD}
+    # working_dir: /root
+    entrypoint: nvim
+    # entrypoint: bash
+    # command: dev.txt
