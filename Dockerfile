@@ -49,7 +49,10 @@ COPY ./nvim /root/.config/nvim
 ARG PYENV_ROOT
 ENV PYENV_ROOT=$PYENV_ROOT
 ENV PATH=$PYENV_ROOT/bin:$PATH
-
 RUN echo '\neval "$(pyenv init -)"\neval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
+
+# install packer
+RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 ENTRYPOINT ["nvim"]
