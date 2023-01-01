@@ -52,7 +52,9 @@ ENV PATH=$PYENV_ROOT/bin:$PATH
 RUN echo '\neval "$(pyenv init -)"\neval "$(pyenv virtualenv-init -)"' >> ~/.bashrc
 
 # install packer
-RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
+    ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+
+RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 ENTRYPOINT ["nvim"]

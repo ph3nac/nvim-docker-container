@@ -21,6 +21,6 @@ services:
       - ${HOME}:${HOME}:cached
     working_dir: ${PWD}
     # working_dir: /root
-    entrypoint: nvim
-    # entrypoint: bash
+    # entrypoint: nvim
+    entrypoint: bash
     # command: dev.txt
