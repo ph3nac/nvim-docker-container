@@ -11,13 +11,19 @@ RUN add-apt-repository ppa:neovim-ppa/stable -y && \
     curl \
     git \
     locales \
-    neovim \
     nodejs \
     npm \
     python3 \
     python3-pip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
+
+# install latest version neovim
+RUN curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage && \
+chmod u+x nvim.appimage && \
+./nvim.appimage --appimage-extract && \
+ln -s /squashfs-root/AppRun /usr/bin/nvim 
+
 
 # reinstall latest node
 RUN npm i -g n && \

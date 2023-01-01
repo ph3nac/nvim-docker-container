@@ -1,4 +1,5 @@
 require('plugins.packer')
-require('core.001-editor')
-require('core.002-mappings')
+require('core.editor')
+require('core.mappings')
 require('lsp')
+require('color.scheme')
