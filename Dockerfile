@@ -62,5 +62,6 @@ RUN git clone --depth 1 https://github.com/wbthomason/packer.nvim \
     ~/.local/share/nvim/site/pack/packer/start/packer.nvim
 
 RUN nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+RUN nvim --headless -c 'MasonInstall typescript-language-server' -c 'quitall'
 
 ENTRYPOINT ["nvim"]

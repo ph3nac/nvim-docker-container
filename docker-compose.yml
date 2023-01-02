@@ -18,9 +18,12 @@ services:
       - type: bind
         source: ./nvim
         target: /root/.config/nvim
+      # - type: bind
+      #   source: ./mason
+      #   target: /root/.local/share/nvim/mason
       - ${HOME}:${HOME}:cached
     working_dir: ${PWD}
     # working_dir: /root
-    # entrypoint: nvim
-    entrypoint: bash
+    entrypoint: nvim
+    # entrypoint: bash
     # command: dev.txt
